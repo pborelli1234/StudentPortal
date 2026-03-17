@@ -1,6 +1,10 @@
-﻿@model List<StudentPortal.Web.Models.Entities.Student>
+﻿@model List<StudentPortal.Web.Dtos.StudentDto>
 
 <h1>Students</h1>
+
+<div style="width:99%;text-align:right">
+    @Html.ActionLink("Add Student", "Add", "Students")
+</div>
     
 <table class="table">
     <thead>
@@ -19,9 +23,12 @@
                 <td>@student.Name</td>
                 <td>@student.Email</td>
                 <td>
-                    <a asp-action="Edit" asp-controller="Students">Edit</a>
+                    <a asp-action="Edit" asp-controller="Students" asp-route-studentId="@student.Id">Edit</a> |
+                    <a asp-action="Delete" asp-controller="Students" asp-route-studentId="@student.Id" >Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<br />
+
